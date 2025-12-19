@@ -7,7 +7,6 @@ on:
     inputs:
       version:
         description: 'Version number to tag the commit'
-        required: true
         default: '1.0.0'
         type: string
 
@@ -41,10 +40,10 @@ jobs:
       if: success() || failure() # always run even if the previous step fails
       with:
         report_paths: '**/reports/**/*.xml'
-    - name: Tag commit with version
-      if: github.event_name == 'workflow_dispatch' && success()
+    - name: Create a tag
+      if: ${{ inputs.version != '' }}
       run: |
         git config user.name "GitHub Actions"
         git config user.email "actions@github.com"
-        git tag -a "v${{ inputs.version }}" -m "Release version ${{ inputs.version }}"
-        git push origin "v${{ inputs.version }}"
+        git tag "${{ inputs.version }}"
+        git push --tags
