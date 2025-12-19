@@ -1,10 +1,21 @@
 pipeline {
     agent any
+
     tools {
         nodejs 'yarn'
     }
 
     stages {
+        stage('checkout') {
+            steps {
+                git branch: 'master', url: 'https://github.com/YourUsername/ciCdPlayground.git'
+                script {
+                    currentBuild.displayName = 'displayName'
+                    currentBuild.description = "${params.Version}"
+                }
+            }
+        }
+
         stage('install') {
             steps {
                 sh 'yarn'
