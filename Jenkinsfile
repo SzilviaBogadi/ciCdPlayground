@@ -55,4 +55,10 @@ pipeline {
             }
         }
     }
+
+    post {
+        always {
+            junit allowEmptyResults: true, testResults: '**/reports/**/*.xml'
+        }
+    }
 }
