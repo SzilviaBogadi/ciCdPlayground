@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git branch: 'master', url: 'https://github.com/YourUsername/ciCdPlayground.git'
+                git branch: 'master', url: 'https://github.com/SzilviaBogadi/ciCdPlayground.git'
                 script {
                     currentBuild.displayName = 'displayName'
                     currentBuild.description = "${params.Version}"
