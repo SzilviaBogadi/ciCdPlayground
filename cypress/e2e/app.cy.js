@@ -1,9 +1,9 @@
 // app.spec.js created with Cypress
 //
 describe('The app', () => {
-    it('tells that you are a butler', () => {
+    it('tells your name', () => {
         cy.visit('')
         cy.get('h1')
-        .should('have.text', 'Hello, my name is James Butler!')
+        .should('have.text', 'Hello, my name is Szilvia!')
     })
   })
